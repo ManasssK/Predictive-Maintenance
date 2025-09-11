@@ -12,10 +12,9 @@ yarn-error.log*
 .env.production.local
 
 # Logs
-logs
+logs/
 *.log
-logs/*
-pids
+pids/
 *.pid
 *.seed
 *.pid.lock
@@ -23,6 +22,26 @@ pids
 # Build output
 dist/
 build/
+frontend/build/
+
+# Python stuff
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.pickle
+*.joblib
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# Datasets / CSV
+*.csv
+*.tsv
+*.xls
+*.xlsx
+*.json
 
 # OS / IDE files
 .DS_Store
