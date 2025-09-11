@@ -49,7 +49,7 @@ localStorage.removeItem("type");
         return storedReminders ? JSON.parse(storedReminders) : {};
     });
     const handleDayClick = (day) => {
-        const reminder = prompt(`Set reminder for March ${day}, 2024:`);
+        const reminder = prompt(`Set reminder for April ${day}, 2025:`);
         if (reminder) {
             setReminders({ ...reminders, [day]: reminder });
         }
@@ -63,7 +63,7 @@ localStorage.removeItem("type");
 
     return (
         <>
-            <nav className="bg-blue-500 p-4 text-white">
+            <nav className="bg-pink-400 p-4 text-white">
                 <div className="container mx-auto flex justify-between items-center">
                     <div className="text-2xl font-bold">Kavach</div>
                     <ul className="flex space-x-4">
@@ -77,7 +77,7 @@ localStorage.removeItem("type");
                 </div>
             </nav>
             <div className="text-5xl">
-                <b style={{ 'marginLeft': '150px' }}>March 2024</b>
+                <b style={{ 'marginLeft': '150px' }}>April 2025</b>
             </div>
 
             <div className="grid grid-cols-7 gap-4 p-4" style={{ 'marginLeft': '150px', 'marginRight': '150px' }}>

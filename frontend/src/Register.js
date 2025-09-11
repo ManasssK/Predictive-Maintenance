@@ -118,7 +118,7 @@ const Register = () => {
             <div>
               <div className="flex items-center justify-between">
                 <label htmlFor="type" className="block text-md font-bold leading-6 text-gray-900">
-                  Type
+                  Role
                 </label>
                 
               </div>

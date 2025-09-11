@@ -62,7 +62,7 @@ const Sidebar = () => {
                             color: "green",
                         }}
                     >
-                        GeeksforGeeks
+                        MaintAI
                     </h1>
                 </Nav>
                 <SidebarNav sidebar={sidebar}>

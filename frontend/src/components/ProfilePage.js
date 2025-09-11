@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import profile from '../images/profile.png'
-import LeaderBoard from './LeaderBoard';
+// import LeaderBoard from './LeaderBoard';
 import Feedback from './Feedback';
 
 const ProfilePage = () => {
@@ -54,14 +54,15 @@ localStorage.removeItem("type");
 
     return (
         <>
-            <nav className="bg-blue-500 p-4 text-white">
+            <nav className="bg-pink-400 p-4 text-white">
                 <div className="container mx-auto flex justify-between items-center">
-                    <div className="text-2xl font-bold">Kavach</div>
+                    <div className="text-2xl font-bold">MaintAI</div>
                     <ul className="flex space-x-4">
                         <li><Link to="/dashboard" className="hover:text-gray-300 text-lg">Home</Link></li>
-                        {type=="Manager" && (<li><Link to="/calender" className='hover:text-gray-300 text-lg'>Calender</Link></li>)}
+                        {/* {type=="Manager" && (<li><Link to="/calender" className='hover:text-gray-300 text-lg'>Calender</Link></li>)} */}
+                        <li><a href="/engine-prediction" className="hover:text-gray-300 text-lg">Machine Prediction</a></li>
                         <li><Link to="/reports" className='hover:text-gray-300 text-lg'>Reports</Link></li>
-                        <li><Link to="/profile" className="hover:text-gray-300 text-lg">Profile</Link></li>
+                        {/* <li><Link to="/profile" className="hover:text-gray-300 text-lg">Profile</Link></li> */}
                         {}
                         <li><button onClick={logout} className="hover:text-gray-300 text-lg">Logout</button></li>
                     </ul>
@@ -80,8 +81,8 @@ localStorage.removeItem("type");
                 </div>
 
                 <div className="border-solid border-2 border-black p-4 m-10 flex flex-col gap-10">
-                    <h1 className="text-3xl font-bold">Email:{email}</h1>
-                    <h1 className="text-3xl font-bold">Type:{type}</h1>
+                    <h1 className="text-3xl font-bold">Email: {email}</h1>
+                    <h1 className="text-3xl font-bold">Role: {type}</h1>
                     
                 </div>
             </div>

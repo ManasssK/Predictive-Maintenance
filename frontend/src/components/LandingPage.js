@@ -1,62 +1,133 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+
 const LandingPage = () => {
   return (
-    <div className="bg-gray-100 font-sans">
+    <div className="bg-gray-100 font-sans min-h-screen flex flex-col relative overflow-hidden">
 
-      {/* Navigation */}
-      <nav className="bg-blue-500 p-4 text-white w-full">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="text-2xl font-bold">AI Kavach</div>
-          <ul className="flex space-x-4">
-            <li><Link to="/" className="hover:text-gray-300">Home</Link></li>            
-            <li><Link to="/login" className="hover:text-gray-300">Sign In </Link></li>
-            <li><Link to="/register" className="hover:text-gray-300">Register</Link></li>
-          </ul>
-        </div>
-      </nav>
+      {/* Inline CSS for Styling */}
+      <style>{`
+        /* General Styles */
+        body {
+          margin: 0;
+          padding: 0;
+        }
 
-     
-      <div className="bg-blue-500 text-white text-center p-6 ">
-  <h1 className="text-4xl font-bold mb-4">Predictive Machine Maintenance for Jet Engine</h1>
-  <p className="text-xl mb-8">Utilize AI to prevent downtime and optimize maintenance schedules.</p>
-  <button className="bg-blue-800 text-white font-bold py-2 px-4 rounded"><Link to="/register" className="hover:text-gray-300">Get Started</Link></button>
-</div>
-<div className="py-12">
-  <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-    {/* Feature 1 */}
-    <div className="text-center bg-white p-6 max-w-sm mx-auto rounded-lg shadow-md">
-      <h2 className="font-bold text-lg">Real-Time Monitoring</h2>
-      <p>Monitor Jet engine systems in real-time to detect issues before they escalate.</p>
-    </div>
-    {/* Feature 2 */}
-    <div className="text-center bg-white p-6 max-w-sm mx-auto rounded-lg shadow-md">
-      <h2 className="font-bold text-lg">Predictive Analysis</h2>
-      <p>Our AI algorithms predict failures and suggest the optimal maintenance schedule.</p>
-    </div>
-    {/* Feature 3 */}
-    <div className="text-center bg-white p-6 max-w-sm mx-auto rounded-lg shadow-md">
-      <h2 className="font-bold text-lg">Cost Reduction</h2>
-      <p>Reduce maintenance costs by preventing unnecessary repairs and downtime.</p>
-    </div>
-  </div>
-</div>
-<div className="py-6 bg-gray-100">
-  <div className="max-w-4xl mx-auto">
-    <h2 className="text-center font-bold text-2xl mb-4">The Power of AI in Maintenance</h2>
-    <p>
-      By harnessing the power of AI and predictive modeling, our app analyzes data from your jet engine systems to forecast potential issues, ensuring that maintenance can be conducted just in time to prevent failures. This proactive approach guarantees the longevity of your equipment and minimizes downtime.
-    </p>
-  </div>
-</div>
+        /* Background 3D Shapes */
+        .background-shapes {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          overflow: hidden;
+        }
 
+        .shape {
+          position: absolute;
+          border-radius: 50%;
+          opacity: 0.7;
+          animation: float 10s infinite ease-in-out alternate;
+        }
 
-     
-      
+        .shape:nth-child(1) {
+          width: 200px;
+          height: 200px;
+          background: rgba(30, 144, 255, 0.6); /* Dodger Blue */
+          top: 10%;
+          left: 20%;
+          animation-duration: 8s;
+        }
+
+        .shape:nth-child(2) {
+          width: 150px;
+          height: 150px;
+          background: rgba(255, 69, 0, 0.6); /* Orange Red */
+          top: 50%;
+          left: 70%;
+          animation-duration: 12s;
+        }
+
+        .shape:nth-child(3) {
+          width: 250px;
+          height: 250px;
+          background: rgba(144, 238, 144, 0.6); /* Light Green */
+          top: 80%;
+          left: 10%;
+          animation-duration: 15s;
+        }
+
+        @keyframes float {
+          0% {
+            transform: translateY(0) rotate(0deg);
+          }
+          100% {
+            transform: translateY(-20px) rotate(360deg);
+          }
+        }
+
+        /* App Name Styling */
+        .app-name {
+          font-size: 4rem;
+          font-weight: bold;
+          color: #007bff; /* Blue */
+          text-shadow: 
+            2px 2px 4px rgba(0, 0, 0, 0.3), 
+            4px 4px 8px rgba(0, 0, 0, 0.2);
+          text-align: center;
+          margin-bottom: 20px;
+        }
+
+        /* Get Started Button */
+        .get-started-button {
+          display: inline-block;
+          padding: 15px 30px;
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: white;
+          background-color: #007bff; /* Blue background */
+          text-decoration: none;
+          border-radius: 10px;
+          box-shadow: 
+            0 8px 0 #0056b3, /* Darker shadow for 3D effect */
+            0 12px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+          transition: all 0.2s ease-in-out;
+        }
+
+        .get-started-button:hover {
+          transform: translateY(4px); /* Move button up slightly on hover */
+          box-shadow: 
+            0 4px 0 #0056b3, /* Adjust shadow for hover state */
+            0 8px 10px rgba(0, 0, 0, 0.2); /* Reduce shadow intensity */
+        }
+
+        .get-started-button:active {
+          transform: translateY(8px); /* Push button down when clicked */
+          box-shadow: 
+            0 2px 0 #0056b3, /* Flatten the shadow */
+            0 4px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow further */
+        }
+      `}</style>
+
+      {/* Background 3D Shapes */}
+      <div className="background-shapes">
+        <div className="shape"></div>
+        <div className="shape"></div>
+        <div className="shape"></div>
+      </div>
+
+      {/* Main Content: Centered App Name and Get Started Button */}
+      <div className="flex-grow flex flex-col justify-center items-center text-center">
+        <h1 className="app-name">MaintAI</h1>
+        <Link to="/register" className="get-started-button">
+          Get Started
+        </Link>
+      </div>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white text-center py-2 fixed bottom-0 left-0 w-full">
-        <p>&copy; 2024 AI Kavach . All rights reserved.</p>
+      <footer className="bg-gray-800 text-white text-center py-2">
+        <p>&copy; 2024 MaintAI. All rights reserved.</p>
       </footer>
 
     </div>

@@ -1,48 +1,50 @@
-import React,{useEffect,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
-import 'chart.js/auto'
+import 'chart.js/auto';
 import axios from 'axios';
-import correlation from '../images/correlation_heatmap.png'
 
 const RULChart = () => {
-
-  const [sensordata, setSensordata] = useState([0, 0.18373494, 0.406801831, 0.309756921, 0, 1, 0.726247987, 0.242424242,
-    0.109755003, 0, 0.369047619, 0.63326226, 0.205882353, 0.199607803, 0.363986149,
-    0, 0.333333333, 0, 0, 0.713178295, 0.724661696, 0.770833333])
-
-    const [rul, setRul] = useState(0);
-
-
+  const [sensordata, setSensordata] = useState([]);
+  const [rul, setRul] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Make the GET request
+        setLoading(true); // Start loading
         const response = await axios.get('http://localhost:5000/predict');
-        // Handle the response data
-        const new_data=response.data.s_data;
-        console.log("new data is: ",new_data)
+        console.log('API Response:', response.data);
+
+        // Validate and update sensor data
+        const new_data = response.data.s_data || [];
+        console.log('Sensor Data:', new_data); // Log the sensor data
         setSensordata(new_data);
-        setRul(response.data.rul);
-        console.log(response.data);
-      } catch (error) {
-        // Handle errors
-        console.error('Error fetching data:', error);
+
+        // Validate and update RUL
+        const new_rul = response.data.rul || 0;
+        setRul(new_rul);
+
+        setError(null); // Clear any previous errors
+      } catch (err) {
+        console.error('Error fetching data:', err);
+        setError('Failed to fetch data. Please try again later.');
+      } finally {
+        setLoading(false); // Stop loading
       }
     };
-  
-    // Call fetchData initially
+
     fetchData();
-  
-    // Set up the interval to call fetchData every 10 seconds
     const intervalId = setInterval(fetchData, 1000);
-  
-    // Clean up the interval to prevent memory leaks
     return () => clearInterval(intervalId);
   }, []);
 
+  useEffect(() => {
+    console.log('Updated Sensor Data:', sensordata); // Log updated sensor data
+  }, [sensordata]);
+
   const data = {
-    labels: ["sensor_1", "sensor_2", "sensor_3", "sensor_4", "sensor_5", "sensor_6", "sensor_7", "sensor_8", "sensor_9", "sensor_10", "sensor_11", "sensor_12", "sensor_13", "sensor_14", "sensor_15", "sensor_16", "sensor_17", "sensor_18", "sensor_19", "sensor_20", "sensor_21"],
+    labels: Array.from({ length: sensordata.length }, (_, i) => `sensor_${i + 1}`),
     datasets: [
       {
         label: 'Sensor data',
@@ -52,39 +54,47 @@ const RULChart = () => {
         borderWidth: 1,
         lineTension: 0.4,
       },
-      
     ],
   };
-  
+
+  console.log('Chart Data:', data); // Log the chart data
+
   const options = {
-    title: {
-      display: true,
-      text: 'Live updation of data',
+    plugins: {
+      title: {
+        display: true,
+        text: 'Live updation of data',
+      },
     },
     scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-          },
-        },
-      ],
+      y: {
+        beginAtZero: true,
+      },
     },
   };
+
+  if (loading) {
+    return <div className="text-center text-lg">Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center text-red-500">{error}</div>;
+  }
+
+  if (sensordata.length === 0) {
+    return <div className="text-center text-lg">No sensor data available.</div>;
+  }
+
   return (
     <>
-      <div className="flex justify-center items-center flex-col mt-4" >
-        
+      <div className="flex justify-center items-center flex-col mt-4">
         <div className="p-2 bg-white rounded shadow" style={{ height: '550px', width: '700px' }}>
           <Line data={data} options={options} />
         </div>
-        <div className='text-3xl font-bold'>The RUL is: {rul}</div>
-        {/* <div>The s_data is: {sensordata}</div> */}
+        <div className="text-3xl font-bold">The RUL is: {rul}</div>
       </div>
-      
     </>
   );
-
-}
+};
 
 export default RULChart;

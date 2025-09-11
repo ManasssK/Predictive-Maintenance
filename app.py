@@ -10,7 +10,8 @@ import requests
 from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 CORS(app, support_credentials=True)
-samples=pd.read_csv("./merged.csv")
+samples = pd.read_csv("d:/Own Projects/Predictive-Maintenance/merged.csv")
+
 
 
 
@@ -38,7 +39,7 @@ for i in range(len(samples)):
     ans.append(samples.iloc[i].tolist())
 
 
-with open("xgb.pkl","rb") as file:
+with open("d:/Own Projects/Predictive-Maintenance/xgb.pkl","rb") as file:
     model=pickle.load(file)
 @app.route('/predict', methods=['GET','POST'])
 def calculate():
