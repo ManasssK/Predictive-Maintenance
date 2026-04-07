@@ -1,87 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--     <title>AI Kavach: Predictive Maintenance for Industrial Equipment using Machine Learning</title> -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Kavach - Predictive Maintenance System</title>
 </head>
+
 <body>
 
 <h1>AI Kavach: Predictive Maintenance for Industrial Equipment using Machine Learning</h1>
 
 <h2>Project Overview</h2>
-<p>AI Kavach is a predictive maintenance solution developed for industrial equipment utilizing machine learning techniques. The project aims to predict equipment failures and maintenance needs in advance, enabling proactive maintenance scheduling and minimizing downtime. This project was developed as part of the IEEE CS SPIT AERAVAT 1.0 AI Hackathon, where it won 1st prize in the machine learning domain.</p>
+<p>
+AI Kavach is an intelligent predictive maintenance platform designed to forecast failures in industrial equipment using machine learning. 
+The system analyzes multivariate sensor data to estimate the Remaining Useful Life (RUL) of machines, allowing organizations to schedule maintenance proactively and significantly reduce unexpected downtime.
+</p>
 
-<h2>Problem Statement</h2>
-<p>Predictive Maintenance for Industrial Equipment Using Machine Learning.</p>
-
-<h2>Objectives</h2>
-<ul>
-    <li>Develop a predictive maintenance solution for industrial equipment.</li>
-    <li>Predict equipment failures and maintenance needs in advance.</li>
-    <li>Enable proactive maintenance scheduling to minimize downtime.</li>
-</ul>
-
-<h2>Dataset Source</h2>
-<p>The dataset used for this project is sourced from NASA CMAPSS Jet Engine Simulated Data. It consists of multiple multivariate time series, each representing data from a different engine in a fleet of engines of the same type.</p>
-
-<h2>Data Preprocessing</h2>
-<ul>
-    <li>Feature Reduction</li>
-    <li>Handling Missing Values</li>
-    <li>Applying Min-Max Scaler</li>
-</ul>
-
-<h2>Model Training (RUL Prediction)</h2>
-<ul>
-    <li>XG Boost</li>
-    <li>Random Forest Regressor</li>
-    <li>Decision Tree Regressor</li>
-</ul>
-
-<h2>React Interactive Web App Features</h2>
-<ul>
-    <li>User Authentication and Access Control</li>
-    <li>Real-time Sensor Data Visualization and RUL Prediction</li>
-    <li>Alerting and Notification System through Web Browser and Telegram</li>
-    <li>Maintenance Scheduling through Personalized Calendar</li>
-    <li>Static Plots and Dashboard</li>
-    <li>Feedback and Reporting</li>
-</ul>
-
-<h2>Technology Stack</h2>
-<ul>
-    <li>React.js</li>
-    <li>Flask</li>
-    <li>MongoDB</li>
-    <li>Node.js</li>
-    <li>Telegram</li>
-    <li>React Chart.js</li>
-</ul>
-
-<h2>Model Performance</h2>
-<p>XG Boost achieved the highest R2 score of 0.65, indicating strong predictive capability.</p>
-
-<h2>Conclusion</h2>
-<ul>
-    <li>XG Boost demonstrated the highest predictive capability.</li>
-    <li>The React Interactive Web App offers comprehensive features for real-time monitoring, prediction, scheduling, and notification.</li>
-    <li>Continuous refinement and integration of user feedback enhance the predictive maintenance system for industrial applications.</li>
-</ul>
-
-<p>For more details, refer to the respective folders in the repository.</p>
+<p>
+This project was developed during the <strong>IEEE CS SPIT AERAVAT 1.0 AI Hackathon</strong>, where it secured 
+<strong>1st Prize in the Machine Learning domain</strong>.
+</p>
 
 <hr>
 
-<p><strong>Contributors:</strong></p>
+<h2>Problem Statement</h2>
+<p>
+Industrial machines generate large volumes of sensor data, yet most maintenance is still performed either reactively (after failure) or periodically. 
+This often leads to unplanned downtime, increased operational costs, and reduced equipment lifespan.
+</p>
+
+<p>
+The goal of this project is to develop a <strong>machine learning-based predictive maintenance system</strong> capable of identifying potential equipment failures before they occur.
+</p>
+
+<hr>
+
+<h2>Objectives</h2>
 <ul>
-    <li>Aditya Potdar</li>
-    <li>Pushkar Waykole</li>
-    <li>Harshit Singh</li>
-    <li>Sarvagya Singh</li>
+<li>Develop a machine learning model to predict equipment failure and Remaining Useful Life (RUL).</li>
+<li>Enable proactive maintenance scheduling using predictive insights.</li>
+<li>Build an interactive web platform for real-time monitoring and visualization.</li>
 </ul>
 
-<p><em>Note:</em> Please find the detailed code, documentation, and results in the repository. Contributions and feedback are welcomed.</p>
+<hr>
+
+<h2>Dataset</h2>
+<p>
+The project utilizes the <strong>NASA CMAPSS Jet Engine Simulated Dataset</strong>, which contains multivariate time-series sensor data collected from a fleet of simulated jet engines.
+</p>
+
+<p>
+Each engine dataset includes multiple operational cycles and sensor readings, enabling predictive modeling of equipment degradation and failure.
+</p>
+
+<hr>
+
+<h2>Data Preprocessing</h2>
+<ul>
+<li>Feature selection and dimensionality reduction</li>
+<li>Handling missing and inconsistent values</li>
+<li>Normalization using <strong>Min-Max Scaling</strong></li>
+<li>Preparation of time-series data for RUL prediction</li>
+</ul>
+
+<hr>
+
+<h2>Machine Learning Models</h2>
+<p>
+Multiple regression-based machine learning models were trained and evaluated to predict the Remaining Useful Life (RUL) of equipment:
+</p>
+
+<ul>
+<li><strong>XGBoost Regressor</strong></li>
+<li><strong>Random Forest Regressor</strong></li>
+<li><strong>Decision Tree Regressor</strong></li>
+</ul>
+
+<hr>
+
+<h2>Model Performance</h2>
+<p>
+Among the evaluated models, <strong>XGBoost achieved the highest performance</strong> with an 
+<strong>R² score of 0.65</strong>, demonstrating strong predictive capability for equipment failure forecasting.
+</p>
+
+<hr>
+
+<h2>Interactive Web Application</h2>
+
+<p>
+A full-stack web platform was developed to make predictive maintenance insights accessible through an interactive dashboard.
+</p>
+
+<ul>
+<li>User authentication and role-based access control</li>
+<li>Real-time sensor data visualization</li>
+<li>Remaining Useful Life (RUL) prediction dashboard</li>
+<li>Predictive alerting via browser notifications and Telegram</li>
+<li>Maintenance scheduling using a personalized calendar</li>
+<li>Static analytics charts and operational dashboards</li>
+<li>Feedback and reporting module</li>
+</ul>
+
+<hr>
+
+<h2>Technology Stack</h2>
+
+<ul>
+<li><strong>Frontend:</strong> React.js, React Chart.js</li>
+<li><strong>Backend:</strong> Flask, Node.js</li>
+<li><strong>Database:</strong> MongoDB</li>
+<li><strong>Machine Learning:</strong> XGBoost, Random Forest, Decision Tree</li>
+<li><strong>Notification System:</strong> Telegram API</li>
+</ul>
+
+<hr>
+
+<h2>Conclusion</h2>
+
+<ul>
+<li>The predictive maintenance system successfully forecasts potential equipment failures using machine learning.</li>
+<li>XGBoost demonstrated the strongest predictive capability among tested models.</li>
+<li>The interactive dashboard enables real-time monitoring, predictive alerts, and proactive maintenance scheduling.</li>
+<li>The system provides a scalable foundation for industrial predictive maintenance solutions.</li>
+</ul>
+
+<hr>
+
+<h2>Contributors</h2>
+
+<ul>
+<li><strong>J Manasa Krishna</strong></li>
+<li><strong>Praneeth Reddy</strong></li>
+</ul>
+
+<p>
+For implementation details, datasets, and source code, please refer to the respective folders in the repository.
+</p>
 
 </body>
 </html>
